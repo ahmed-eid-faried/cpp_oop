@@ -36,12 +36,12 @@ public:
 	void Print() {
 		cout << "Info: " << endl;
 		cout << "--------------------------------------------" << endl;
-		cout << "ID: \t" << _Id << endl;
-		cout << "FristName: \t" << _FristName << endl;
-		cout << "LastName: \t" << _LastName << endl;
-		cout << "FullName: \t" << _FullName << endl;
-		cout << "Email: \t" << _Email << endl;
-		cout << "Phone: \t" << _Phone << endl;
+		cout << "ID         : \t" << _Id << endl;
+		cout << "FristName  : \t" << _FristName << endl;
+		cout << "LastName   : \t" << _LastName << endl;
+		cout << "FullName   : \t" << _FullName << endl;
+		cout << "Email      : \t" << _Email << endl;
+		cout << "Phone      : \t" << _Phone << endl;
 		cout << "--------------------------------------------" << endl;
 	}
 	~clsPerson() {
