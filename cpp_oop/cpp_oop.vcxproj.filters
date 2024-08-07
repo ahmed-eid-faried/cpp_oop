@@ -26,5 +26,8 @@
     <ClInclude Include="employee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="inherted_employee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

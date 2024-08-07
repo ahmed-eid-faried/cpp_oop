@@ -11,7 +11,7 @@ private:
 	string _Phone;
 
 public:
-
+	//clsPerson(){}//defaul constrator 
 	clsPerson(int Id, string FristName, string LastName, string Email, string Phone)
 	{
 		_Id = Id;
@@ -62,7 +62,8 @@ public:
 	__declspec(property(get = GetLastName, put = SetLastName))string LastName;
 	//FullName
 	string GetFullName() { return _FullName; }
-	__declspec(property(get = GetFullName))string FullName;
+	void SetFullName(string FullName) { _FullName = FullName; }
+	__declspec(property(get = GetFullName, put = SetFullName))string FullName;
 	//Email
 	string GetEmail() { return _Email; }
 	void SetEmail(string Email) { _Email = Email; }
