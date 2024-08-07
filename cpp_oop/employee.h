@@ -16,7 +16,8 @@ private:
 
 
 public:
-	clsEmployee(int Id, string FristName, string LastName, string Email, string Phone, string Title, double Salary, string Department)
+	clsEmployee(int Id, string FristName, string LastName, string Email, string Phone,
+		string Title, double Salary, string Department)
 	{
 		_Id = Id;
 		_FristName = FristName;
@@ -44,12 +45,15 @@ public:
 	void Print() {
 		cout << "Info: " << endl;
 		cout << "--------------------------------------------" << endl;
-		cout << "ID         : \t" << _Id << endl;
-		cout << "FristName  : \t" << _FristName << endl;
-		cout << "LastName   : \t" << _LastName << endl;
-		cout << "FullName   : \t" << _FullName << endl;
-		cout << "Email      : \t" << _Email << endl;
-		cout << "Phone      : \t" << _Phone << endl;
+		cout << " ID         : " << _Id << endl;
+		cout << " FristName  : " << _FristName << endl;
+		cout << " LastName   : " << _LastName << endl;
+		cout << " FullName   : " << _FullName << endl;
+		cout << " Email      : " << _Email << endl;
+		cout << " Phone      : " << _Phone << endl;
+		cout << " Title      : " << _Title << endl;
+		cout << " Salary     : " << _Salary << endl;
+		cout << " Department : " << _Department << endl;
 		cout << "--------------------------------------------" << endl;
 	}
 	~clsEmployee() {
