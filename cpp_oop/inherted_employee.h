@@ -18,6 +18,7 @@ public:
 		_Department = Department;
 	}
 
+	//Overriding
 	void Print() {
 		cout << "Info: " << endl;
 		cout << "--------------------------------------------" << endl;

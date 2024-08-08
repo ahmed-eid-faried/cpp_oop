@@ -130,8 +130,10 @@
     <ClCompile Include="cpp_oop.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="developer.h" />
     <ClInclude Include="employee.h" />
     <ClInclude Include="inherted_employee.h" />
+    <ClInclude Include="nested_class.h" />
     <ClInclude Include="person.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -29,5 +29,11 @@
     <ClInclude Include="inherted_employee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="developer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nested_class.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
