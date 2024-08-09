@@ -271,16 +271,22 @@ public:
 	static string Trim(string S1) {
 		return TrimRight(TrimLeft(S1));
 	}
+	//static string  JoinString(vector<string> listWords, string delim = " ") {
+	//	string S1 = "";
+	//	for (int i = 0; i < listWords.size(); i++)
+	//	{
+	//		S1 += listWords[i];
+	//		if (i < listWords.size() - 1)			S1 += delim;
+	//	}
+	//	return S1;
+	//}
 	static string  JoinString(vector<string> listWords, string delim = " ") {
-
-
 		string S1 = "";
-		for (int i = 0; i < listWords.size(); i++)
+		for (string i : listWords)
 		{
-			S1 += listWords[i];
-			if (i < listWords.size() - 1)			S1 += delim;
+			S1 += i + delim;
 		}
-		return S1;
+		return S1.substr(0, S1.length() - (delim.length()));
 	}
 	static string  JoinString(string  listWords[100], short length, string delim = " ") {
 		string S1 = "";
@@ -339,6 +345,46 @@ public:
 		}
 		return S1;
 	}
+	static 	string ReplaceString(string S1, int position, int  length, string ReplaceTo) {
+		int indexOfReplaceTo = 0;
+		for (int i = position; i <= length + position; i++)
+		{
+			S1[i] = ReplaceTo[indexOfReplaceTo];
+			indexOfReplaceTo++;
+		}
+
+		return S1;
+	}
+	static string ReplaceWordInStringUsingSplit(string S1, string  StringToReplace, string ReplaceTo) {
+		vector<string>vString = SplitString(S1, StringToReplace);
+		S1 = JoinString(vString, ReplaceTo);
+		return S1;
+	}
+	static string ReplaceWordInStringUsingSplit(string S1, string  StringToReplace, string ReplaceTo, bool IsMatchedCase) {
+		vector<string>vString = SplitString(S1, " ");
+		for (string& S : vString)
+		{
+			if (IsMatchedCase) {
+				if (S == StringToReplace)S = ReplaceTo;
+			}
+			else {
+				if (LowerAllString(S) == LowerAllString(StringToReplace))S = ReplaceTo;
+
+			}
+		}
+		S1 = JoinString(vString, " ");
+		return S1;
+	}
+	static 	string  RemovePunctuationsFromString(string S1) {
+		string str = "";
+		for (short i = 0; i < S1.length(); i++)
+		{
+			if (!ispunct(S1[i]))
+				str += S1[i];
+		}
+		return str;
+	}
+
 
 	//Objected Functions:-
 	void PrintFirstLetterOfEachWord() {
@@ -401,12 +447,8 @@ public:
 	string Trim() {
 		return    Trim(_Value);
 	}
-	string  JoinString(vector<string> listWords, string delim = " ") {
-		return   JoinString(listWords, delim);
-	}
-	string  JoinString(string  listWords[100], short length, string delim = " ") {
-		return    JoinString(listWords, length, delim);
-	}
+	//string  JoinString(vector<string> listWords, string delim = " ")  
+	//string  JoinString(string  listWords[100], short length, string delim = " ")  
 	void PrintVectorString(vector<string> listWords) {
 		return   PrintVectorString(listWords);
 	}
@@ -423,6 +465,18 @@ public:
 	string ReplaceWordInStringUsingBuiltInFunction(string  StringToReplace, string ReplaceTo)
 	{
 		return   ReplaceWordInStringUsingBuiltInFunction(_Value, StringToReplace, ReplaceTo);
+	}
+	string ReplaceString(int position, int  length, string ReplaceTo) {
+		return  ReplaceString(_Value, position, length, ReplaceTo);
+	}
+	string ReplaceWordInStringUsingSplit(string  StringToReplace, string ReplaceTo) {
+		return ReplaceWordInStringUsingSplit(_Value, StringToReplace, ReplaceTo);
+	}
+	string ReplaceWordInStringUsingSplit(string  StringToReplace, string ReplaceTo, bool IsMatchedCase) {
+		return   ReplaceWordInStringUsingSplit(_Value, StringToReplace, ReplaceTo, IsMatchedCase);
+	}
+	string  RemovePunctuationsFromString(string S1) {
+		return   RemovePunctuationsFromString(_Value);
 	}
 
 };
