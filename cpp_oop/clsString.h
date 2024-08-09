@@ -282,6 +282,15 @@ public:
 		}
 		return S1;
 	}
+	static string  JoinString(string  listWords[100], short length, string delim = " ") {
+		string S1 = "";
+		for (int i = 0; i < length; i++)
+		{
+			S1 += listWords[i];
+			if (i < length - 1)			S1 += delim;
+		}
+		return S1;
+	}
 	static void PrintVectorString(vector<string> listWords) {
 		cout << "listWords (vector) ==>> " << "[ ";
 		for (int i = 0; i < listWords.size(); i++)
@@ -290,6 +299,37 @@ public:
 		}
 		cout << ']' << endl;
 	}
+	static void PrintVectorString(string  listWords[100], short length) {
+		cout << "listWords (vector) ==>> " << "[ ";
+		for (int i = 0; i < length; i++)
+		{
+			cout << listWords[i] << " ";
+		}
+		cout << ']' << endl;
+	}
+	static string  ReverseJoinString(vector<string> listWords, string delim = " ") {
+		string S1 = "";
+		vector<string> ::iterator iter = listWords.end();
+		while (iter != listWords.begin())
+		{
+			--iter;
+			S1 += *iter + delim;
+		}
+		return S1.substr(0, S1.length() - (delim.length()));
+	}
+	static string ReverseWordsString(string S1, string delim = " ") {
+		return ReverseJoinString(SplitString(S1, delim), delim);
+	}
+	static void PrintReverseVectorString(vector<string> listWords) {
+		cout << " ===>>> ";
+		for (int i = listWords.size() - 1; i >= 0; i--)
+		{
+			cout << listWords[i] << " ";
+		}
+		cout << endl;
+
+	}
+
 
 	//Objected Functions:-
 	void PrintFirstLetterOfEachWord() {
@@ -352,11 +392,26 @@ public:
 	string Trim() {
 		return    Trim(_Value);
 	}
-	static string  JoinString(vector<string> listWords, string delim = " ") {
+	string  JoinString(vector<string> listWords, string delim = " ") {
 		return   JoinString(listWords, delim);
+	}
+	string  JoinString(string  listWords[100], short length, string delim = " ") {
+		return    JoinString(listWords, length, delim);
 	}
 	void PrintVectorString(vector<string> listWords) {
 		return   PrintVectorString(listWords);
 	}
+	void PrintVectorString(string  listWords[100], short length) {
+		return    PrintVectorString(listWords, length);
+	}
+	//string  ReverseJoinString(vector<string> listWords, string delim = " ") 
+	string ReverseWordsString(string delim = " ") {
+		return   ReverseWordsString(_Value, delim);
+	}
+	void PrintReverseVectorString(vector<string> listWords) {
+		return   PrintReverseVectorString(listWords);
+	}
+
+
 };
 
