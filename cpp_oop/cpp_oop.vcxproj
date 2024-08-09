@@ -130,6 +130,7 @@
     <ClCompile Include="cpp_oop.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="clsString.h" />
     <ClInclude Include="developer.h" />
     <ClInclude Include="employee.h" />
     <ClInclude Include="inherted_employee.h" />

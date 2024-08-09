@@ -76,7 +76,7 @@ public:
 	};
 
 };
-void NestedExample() {
+void NestedClassesExample() {
 	clsA A;
 	cout << A.varSup3 << endl;
 	clsA::clsB B;
