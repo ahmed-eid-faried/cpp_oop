@@ -104,7 +104,7 @@ public:
 		//Char = (Char > char(90)) ? toupper(Char) : tolower(Char);
 		return Char;
 	}
-	static 	string InvertAllStringLettersCase(string text) {
+	static 	string InvertAllLettersCase(string text) {
 		for (int i = 0; i < text.length(); i++)
 		{
 			text[i] = InvertLetterCase(text[i]);
@@ -146,7 +146,7 @@ public:
 			return 0;
 		}
 	}
-	//static	int CountLetterInString(string text, char Ch1) {
+	//static	int CountSpecificLetter(string text, char Ch1) {
 	//	int Conter = 0;
 	//	for (int i = 0; i < text.length(); i++)
 	//	{
@@ -154,7 +154,7 @@ public:
 	//	}
 	//	return Conter;
 	//}
-	static 	int CountLetterInString(string text, char Ch1, bool IsMatchCase = true) {
+	static 	int CountSpecificLetter(string text, char Ch1, bool IsMatchCase = true) {
 		int Conter = 0;
 		char InvertLetter = InvertLetterCase(Ch1);
 		for (int i = 0; i < text.length(); i++)
@@ -224,8 +224,7 @@ public:
 		if (S1 != "")counter++;
 		return counter;
 	}
-	static vector<string> SplitString(string S1, string delim = " ") {
-
+	static vector<string> Split(string S1, string delim) {
 		int position = 0;
 		string subWord = "";
 		int counter = 0;
@@ -323,8 +322,8 @@ public:
 		}
 		return S1.substr(0, S1.length() - (delim.length()));
 	}
-	static string ReverseWordsString(string S1, string delim = " ") {
-		return ReverseJoinString(SplitString(S1, delim), delim);
+	static string ReverseWordsInString(string S1, string delim = " ") {
+		return ReverseJoinString(Split(S1, delim), delim);
 	}
 	static void PrintReverseVectorString(vector<string> listWords) {
 		cout << " ===>>> ";
@@ -335,7 +334,7 @@ public:
 		cout << endl;
 
 	}
-	static string ReplaceWordInStringUsingBuiltInFunction(string S1, string  StringToReplace, string ReplaceTo) {
+	static string ReplaceWord(string S1, string  StringToReplace, string ReplaceTo) {
 		int position = S1.find(StringToReplace);
 		int counter = 0;
 		while (position != string::npos)
@@ -355,13 +354,13 @@ public:
 
 		return S1;
 	}
-	static string ReplaceWordInStringUsingSplit(string S1, string  StringToReplace, string ReplaceTo) {
-		vector<string>vString = SplitString(S1, StringToReplace);
+	static string ReplaceWordsUsingSplit(string S1, string  StringToReplace, string ReplaceTo) {
+		vector<string>vString = Split(S1, StringToReplace);
 		S1 = JoinString(vString, ReplaceTo);
 		return S1;
 	}
-	static string ReplaceWordInStringUsingSplit(string S1, string  StringToReplace, string ReplaceTo, bool IsMatchedCase) {
-		vector<string>vString = SplitString(S1, " ");
+	static string ReplaceWordsUsingSplit(string S1, string  StringToReplace, string ReplaceTo, bool IsMatchedCase) {
+		vector<string>vString = Split(S1, " ");
 		for (string& S : vString)
 		{
 			if (IsMatchedCase) {
@@ -375,7 +374,7 @@ public:
 		S1 = JoinString(vString, " ");
 		return S1;
 	}
-	static 	string  RemovePunctuationsFromString(string S1) {
+	static 	string  RemovePunctuations(string S1) {
 		string str = "";
 		for (short i = 0; i < S1.length(); i++)
 		{
@@ -384,27 +383,29 @@ public:
 		}
 		return str;
 	}
-
+	static int Length(string S1) {
+		return S1.length();
+	}
 
 	//Objected Functions:-
 	void PrintFirstLetterOfEachWord() {
 		return PrintFirstLetterOfEachWord(_Value);
 	}
-	string UpperFirstLetterOfEachWord() {
-		return UpperFirstLetterOfEachWord(_Value);
+	void UpperFirstLetterOfEachWord() {
+		_Value = UpperFirstLetterOfEachWord(_Value);
 	}
-	string LowerFirstLetterOfEachWord() {
-		return LowerFirstLetterOfEachWord(_Value);
+	void LowerFirstLetterOfEachWord() {
+		_Value = LowerFirstLetterOfEachWord(_Value);
 	}
-	string LowerAllString() {
-		return LowerAllString(_Value);
+	void LowerAllString() {
+		_Value = LowerAllString(_Value);
 	}
-	string UpperAllString() {
-		return UpperAllString(_Value);
+	void UpperAllString() {
+		_Value = UpperAllString(_Value);
 	}
 	//char InvertLetterCase() 
-	string InvertAllStringLettersCase(string text) {
-		return InvertAllStringLettersCase(_Value);
+	void InvertAllLettersCase() {
+		_Value = InvertAllLettersCase(_Value);
 	}
 	int CountCapitalLetters() {
 		return CountCapitalLetters(_Value);
@@ -415,9 +416,9 @@ public:
 	int CountLetters(enWhatToCount WhatToCount = enWhatToCount::All) {
 		return CountLetters(_Value, WhatToCount);
 	}
-	//int CountLetterInString(char Ch1) 
-	int CountLetterInString(char Ch1, bool IsMatchCase = true) {
-		return  CountLetterInString(_Value, Ch1, IsMatchCase);
+	//int CountSpecificLetter(char Ch1) 
+	int CountSpecificLetter(char Ch1, bool IsMatchCase = true) {
+		return  CountSpecificLetter(_Value, Ch1, IsMatchCase);
 	}
 	// bool IsVowel(char Ch1)
 	int CountVowels() {
@@ -432,23 +433,21 @@ public:
 	int CountWords() {
 		return 	  CountWords(_Value);
 	}
-	vector<string> SplitString(string delim = " ") {
-		return   SplitString(_Value, delim);
+	vector<string> Split(string delim = " ") {
+		return   Split(_Value, delim);
 	}
 	void PrintVectorString(vector<string> listWords) {
 		return PrintVectorString(listWords);
 	}
-	string TrimLeft() {
-		return    TrimLeft(_Value);
+	void TrimLeft() {
+		_Value = TrimLeft(_Value);
 	}
-	string TrimRight() {
-		return    TrimRight(_Value);
+	void TrimRight() {
+		_Value = TrimRight(_Value);
 	}
-	string Trim() {
-		return    Trim(_Value);
+	void Trim() {
+		_Value = Trim(_Value);
 	}
-	//string  JoinString(vector<string> listWords, string delim = " ")  
-	//string  JoinString(string  listWords[100], short length, string delim = " ")  
 	void PrintVectorString(vector<string> listWords) {
 		return   PrintVectorString(listWords);
 	}
@@ -456,28 +455,201 @@ public:
 		return    PrintVectorString(listWords, length);
 	}
 	//string  ReverseJoinString(vector<string> listWords, string delim = " ") 
-	string ReverseWordsString(string delim = " ") {
-		return   ReverseWordsString(_Value, delim);
+	void ReverseWordsInString(string delim = " ") {
+		_Value = ReverseWordsInString(_Value, delim);
 	}
 	void PrintReverseVectorString(vector<string> listWords) {
 		return   PrintReverseVectorString(listWords);
 	}
-	string ReplaceWordInStringUsingBuiltInFunction(string  StringToReplace, string ReplaceTo)
+	void ReplaceWord(string  StringToReplace, string ReplaceTo)
 	{
-		return   ReplaceWordInStringUsingBuiltInFunction(_Value, StringToReplace, ReplaceTo);
+		_Value = ReplaceWord(_Value, StringToReplace, ReplaceTo);
 	}
-	string ReplaceString(int position, int  length, string ReplaceTo) {
-		return  ReplaceString(_Value, position, length, ReplaceTo);
+	void ReplaceString(int position, int  length, string ReplaceTo) {
+		_Value = ReplaceString(_Value, position, length, ReplaceTo);
 	}
-	string ReplaceWordInStringUsingSplit(string  StringToReplace, string ReplaceTo) {
-		return ReplaceWordInStringUsingSplit(_Value, StringToReplace, ReplaceTo);
+	void ReplaceWordsUsingSplit(string  StringToReplace, string ReplaceTo) {
+		_Value = ReplaceWordsUsingSplit(_Value, StringToReplace, ReplaceTo);
 	}
-	string ReplaceWordInStringUsingSplit(string  StringToReplace, string ReplaceTo, bool IsMatchedCase) {
-		return   ReplaceWordInStringUsingSplit(_Value, StringToReplace, ReplaceTo, IsMatchedCase);
+	void ReplaceWordsUsingSplit(string  StringToReplace, string ReplaceTo, bool IsMatchedCase) {
+		_Value = ReplaceWordsUsingSplit(_Value, StringToReplace, ReplaceTo, IsMatchedCase);
 	}
-	string  RemovePunctuationsFromString(string S1) {
-		return   RemovePunctuationsFromString(_Value);
+	void  RemovePunctuations() {
+		_Value = RemovePunctuations(_Value);
 	}
-
+	int Length() {
+		return Length(_Value);
+	}
 };
 
+
+
+void ClsStringExample() {
+	clsString String1;
+
+
+	clsString String2("Mohammed");
+
+	String1.Value = "Ali Ahmed";
+
+	cout << "String1 = " << String1.Value << endl;
+	cout << "String2 = " << String2.Value << endl;
+
+	cout << "Number of words: " << String1.CountWords() << endl;
+
+	cout << "Number of words: " << String1.CountWords("Fadi ahmed rateb omer") << endl;
+
+	cout << "Number of words: " <<
+		clsString::CountWords("Mohammed Saqer Abu-Hadhoud") << endl;
+
+	//----------------
+	clsString String3("hi how are you?");
+
+	cout << "String 3 = " << String3.Value << endl;
+
+	cout << "String Length = " << String3.Length() << endl;
+
+	String3.UpperFirstLetterOfEachWord();
+	cout << String3.Value << endl;
+
+	//----------------
+
+	String3.LowerFirstLetterOfEachWord();
+	cout << String3.Value << endl;
+
+	//----------------
+
+	String3.UpperAllString();
+	cout << String3.Value << endl;
+
+	//----------------
+
+	String3.LowerAllString();
+	cout << String3.Value << endl;
+
+	//----------------
+
+	cout << "After inverting a : "
+		<< clsString::InvertLetterCase('a') << endl;
+
+	//----------------
+
+	String3.Value = "AbCdEfg";
+
+	String3.InvertAllLettersCase();
+	cout << String3.Value << endl;
+
+	String3.InvertAllLettersCase();
+	cout << String3.Value << endl;
+
+	//----------------
+
+	cout << "Capital Letters count : "
+		<< clsString::CountLetters("Mohammed Abu-Hadhoud", clsString::CapitalLetters)
+		<< endl << endl;
+
+	//----------------
+
+	String3.Value = "Welcome to Jordan";
+	cout << String3.Value << endl;
+
+	cout << "Capital Letters count :" << String3.CountCapitalLetters() << endl;
+
+	//----------------
+
+	cout << "Small Letters count :" << String3.CountSmallLetters() << endl;
+
+	//----------------
+
+	cout << "vowels count :" << String3.CountVowels() << endl;
+
+	//----------------
+
+	cout << "letter E count :" << String3.CountSpecificLetter('E', false) << endl;
+
+	//----------------
+
+	cout << "is letter u vowel? " << clsString::IsVowel('a')
+		<< endl;
+
+	//----------------
+
+	cout << "Words Count" << String3.CountWords()
+		<< endl;
+
+	//----------------
+
+
+	vector<string> vString;
+	string delim = " ";
+	vString = String3.Split(delim);
+
+	cout << "\nTokens = " << vString.size() << endl;
+
+	for (string& s : vString)
+	{
+		cout << s << endl;
+	}
+
+	//----------------
+
+	//Tirms
+	String3.Value = "    Mohammed Abu-Hahdoud     ";
+	cout << "\nString     = " << String3.Value;
+
+	String3.Value = "    Mohammed Abu-Hahdoud     ";
+	String3.TrimLeft();
+	cout << "\n\nTrim Left  = " << String3.Value;
+
+	//----------------
+
+	String3.Value = "    Mohammed Abu-Hahdoud     ";
+	String3.TrimRight();
+	cout << "\nTrim Right = " << String3.Value;
+
+	//----------------
+
+	String3.Value = "    Mohammed Abu-Hahdoud     ";
+	String3.Trim();
+	cout << "\nTrim       = " << String3.Value;
+
+	//----------------
+
+	//Joins
+	vector<string> vString1 = { "Mohammed","Faid","Ali","Maher" };
+
+	cout << "\n\nJoin String From Vector: \n";
+	cout << clsString::JoinString(vString1, " ");
+
+
+	string arrString[] = { "Mohammed","Faid","Ali","Maher" };
+
+	cout << "\n\nJoin String From array: \n";
+	cout << clsString::JoinString(arrString, 4, " ");
+
+	//----------------
+
+	String3.Value = "Mohammed Saqer Abu-Hahdoud";
+	cout << "\n\nString     = " << String3.Value;
+
+	String3.ReverseWordsInString();
+	cout << "\nReverse Words : " << String3.Value
+		<< endl;
+
+	//---------------
+
+	String3.Value = "Mohammed Saqer Abu-Hahdoud";
+	String3.ReplaceWord("Mohammed", "Sari");
+	cout << "\nReplace : " << String3.Value << endl;
+
+	//---------------
+
+	String3.Value = "This is: a sample text, with punctuations.";
+	cout << "\n\nString     = " << String3.Value;
+
+	String3.RemovePunctuations();
+	cout << "\nRemove Punctuations : " << String3.Value
+		<< endl;
+
+
+};
