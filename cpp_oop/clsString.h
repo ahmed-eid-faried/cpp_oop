@@ -246,7 +246,31 @@ public:
 			cout << listWords[i] << endl;
 		}
 	}
-
+	static string TrimLeft(string S1) {
+		char delim = ' ';
+		vector<string> listWords;
+		for (int i = 0; i < S1.length(); i++)
+		{
+			if (delim != S1[i]) {
+				S1.erase(0, i);
+				return S1;
+			}
+		}
+	}
+	static string TrimRight(string S1) {
+		char delim = ' ';
+		vector<string> listWords;
+		for (int i = S1.length() - 1; i >= 0; i--)
+		{
+			if (delim != S1[i]) {
+				S1.erase(i, S1.length());
+				return S1;
+			}
+		}
+	}
+	static string Trim(string S1) {
+		return TrimRight(TrimLeft(S1));
+	}
 
 	//Objected Functions:-
 	void PrintFirstLetterOfEachWord() {
@@ -300,7 +324,14 @@ public:
 	void PrintVectorString(vector<string> listWords) {
 		return PrintVectorString(listWords);
 	}
-
-
+	string TrimLeft() {
+		return    TrimLeft(_Value);
+	}
+	string TrimRight() {
+		return    TrimRight(_Value);
+	}
+	string Trim() {
+		return    Trim(_Value);
+	}
 };
 
