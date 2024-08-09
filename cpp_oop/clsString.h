@@ -329,7 +329,16 @@ public:
 		cout << endl;
 
 	}
-
+	static string ReplaceWordInStringUsingBuiltInFunction(string S1, string  StringToReplace, string ReplaceTo) {
+		int position = S1.find(StringToReplace);
+		int counter = 0;
+		while (position != string::npos)
+		{
+			S1 = S1.replace(position, StringToReplace.length(), ReplaceTo);
+			position = S1.find(StringToReplace);
+		}
+		return S1;
+	}
 
 	//Objected Functions:-
 	void PrintFirstLetterOfEachWord() {
@@ -411,7 +420,10 @@ public:
 	void PrintReverseVectorString(vector<string> listWords) {
 		return   PrintReverseVectorString(listWords);
 	}
-
+	string ReplaceWordInStringUsingBuiltInFunction(string  StringToReplace, string ReplaceTo)
+	{
+		return   ReplaceWordInStringUsingBuiltInFunction(_Value, StringToReplace, ReplaceTo);
+	}
 
 };
 
