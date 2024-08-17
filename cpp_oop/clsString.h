@@ -239,13 +239,7 @@ public:
 		if (S1 != "")listWords.push_back(S1);
 		return listWords;
 	}
-	static void PrintVectorString(vector<string> listWords) {
-		for (int i = 0; i < listWords.size(); i++)
-		{
-			cout << listWords[i] << endl;
-		}
-	}
-	static string TrimLeft(string S1) {
+ 	static string TrimLeft(string S1) {
 		char delim = ' ';
 		vector<string> listWords;
 		for (int i = 0; i < S1.length(); i++)
@@ -436,9 +430,7 @@ public:
 	vector<string> Split(string delim = " ") {
 		return   Split(_Value, delim);
 	}
-	void PrintVectorString(vector<string> listWords) {
-		return PrintVectorString(listWords);
-	}
+ 
 	void TrimLeft() {
 		_Value = TrimLeft(_Value);
 	}
@@ -448,20 +440,10 @@ public:
 	void Trim() {
 		_Value = Trim(_Value);
 	}
-	void PrintVectorString(vector<string> listWords) {
-		return   PrintVectorString(listWords);
-	}
-	void PrintVectorString(string  listWords[100], short length) {
-		return    PrintVectorString(listWords, length);
-	}
-	//string  ReverseJoinString(vector<string> listWords, string delim = " ") 
-	void ReverseWordsInString(string delim = " ") {
+ 	void ReverseWordsInString(string delim = " ") {
 		_Value = ReverseWordsInString(_Value, delim);
 	}
-	void PrintReverseVectorString(vector<string> listWords) {
-		return   PrintReverseVectorString(listWords);
-	}
-	void ReplaceWord(string  StringToReplace, string ReplaceTo)
+ 	void ReplaceWord(string  StringToReplace, string ReplaceTo)
 	{
 		_Value = ReplaceWord(_Value, StringToReplace, ReplaceTo);
 	}
@@ -488,9 +470,9 @@ void ClsStringExample() {
 	clsString String1;
 
 
-	clsString String2("Mohammed");
+	clsString String2("Ahmed");
 
-	String1.Value = "Ali Ahmed";
+	String1.Value = "Faten Ahmed";
 
 	cout << "String1 = " << String1.Value << endl;
 	cout << "String2 = " << String2.Value << endl;
@@ -500,7 +482,7 @@ void ClsStringExample() {
 	cout << "Number of words: " << String1.CountWords("Fadi ahmed rateb omer") << endl;
 
 	cout << "Number of words: " <<
-		clsString::CountWords("Mohammed Saqer Abu-Hadhoud") << endl;
+		clsString::CountWords("Ahmed Eid Abu-Hadhoud") << endl;
 
 	//----------------
 	clsString String3("hi how are you?");
@@ -545,7 +527,7 @@ void ClsStringExample() {
 	//----------------
 
 	cout << "Capital Letters count : "
-		<< clsString::CountLetters("Mohammed Abu-Hadhoud", clsString::CapitalLetters)
+		<< clsString::CountLetters("Ahmed Abu-Hadhoud", clsString::CapitalLetters)
 		<< endl << endl;
 
 	//----------------
@@ -581,8 +563,7 @@ void ClsStringExample() {
 
 
 	vector<string> vString;
-	string delim = " ";
-	vString = String3.Split(delim);
+	vString = String3.Split();
 
 	cout << "\nTokens = " << vString.size() << endl;
 
@@ -594,42 +575,42 @@ void ClsStringExample() {
 	//----------------
 
 	//Tirms
-	String3.Value = "    Mohammed Abu-Hahdoud     ";
+	String3.Value = "    Ahmed Mady     ";
 	cout << "\nString     = " << String3.Value;
 
-	String3.Value = "    Mohammed Abu-Hahdoud     ";
+	String3.Value = "    Ahmed Mady     ";
 	String3.TrimLeft();
 	cout << "\n\nTrim Left  = " << String3.Value;
 
 	//----------------
 
-	String3.Value = "    Mohammed Abu-Hahdoud     ";
+	String3.Value = "    Ahmed Mady     ";
 	String3.TrimRight();
 	cout << "\nTrim Right = " << String3.Value;
 
 	//----------------
 
-	String3.Value = "    Mohammed Abu-Hahdoud     ";
+	String3.Value = "    Ahmed Mady     ";
 	String3.Trim();
 	cout << "\nTrim       = " << String3.Value;
 
 	//----------------
 
 	//Joins
-	vector<string> vString1 = { "Mohammed","Faid","Ali","Maher" };
+	vector<string> vString1 = { "Ahmed","Faid","Faten","Maher" };
 
 	cout << "\n\nJoin String From Vector: \n";
 	cout << clsString::JoinString(vString1, " ");
 
 
-	string arrString[] = { "Mohammed","Faid","Ali","Maher" };
+	string arrString[] = { "Ahmed","Faid","Faten","Maher" };
 
 	cout << "\n\nJoin String From array: \n";
 	cout << clsString::JoinString(arrString, 4, " ");
 
 	//----------------
 
-	String3.Value = "Mohammed Saqer Abu-Hahdoud";
+	String3.Value = "Ahmed Eid Mady";
 	cout << "\n\nString     = " << String3.Value;
 
 	String3.ReverseWordsInString();
@@ -638,8 +619,8 @@ void ClsStringExample() {
 
 	//---------------
 
-	String3.Value = "Mohammed Saqer Abu-Hahdoud";
-	String3.ReplaceWord("Mohammed", "Sari");
+	String3.Value = "Ahmed Eid Mady";
+	String3.ReplaceWord("Ahmed", "Sari");
 	cout << "\nReplace : " << String3.Value << endl;
 
 	//---------------

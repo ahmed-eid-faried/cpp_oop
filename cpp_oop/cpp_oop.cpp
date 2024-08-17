@@ -4,6 +4,7 @@
 #include "inherted_employee.h"
 #include "developer.h"
 #include "nested_class.h"
+#include "clsString.h"
 using namespace std;
  int main()
 {
@@ -11,6 +12,7 @@ using namespace std;
 	 //EmployeeExample();
 	 //InhertedEmployeeExample();
 	 //DeveloperExample();
-	 NestedClassesExample();
+	 //NestedClassesExample();
+	 ClsStringExample();
 
 }
