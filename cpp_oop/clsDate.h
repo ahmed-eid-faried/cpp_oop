@@ -23,6 +23,19 @@ class clsDate {
 	short _Month;
 	short _Year;
 public:
+	//setter and getter:-
+	short GetDay() { return _Day; };
+	void SetDay(short Day) { _Day = Day; };
+	__declspec(property(get = GetDay, put = SetDay))short Day;
+	//setter and getter:-
+	short GetMonth() { return _Month; };
+	void SetMonth(short Month) { _Month = Month; };
+	__declspec(property(get = GetMonth, put = SetMonth))short Month;
+	//setter and getter:-
+	short GetYear() { return _Year; };
+	void SetYear(short Year) { _Year = Year; };
+	__declspec(property(get = GetYear, put = SetYear))short Year;
+
 	static int ReadNumberInRange(int From, int To, string Message = "ENTER NUMBER") {
 		int NUM;
 		do {
@@ -83,9 +96,15 @@ public:
 		if (S1 != "")listWords.push_back(S1);
 		return listWords;
 	}
-	static	short NumOfDaysInMonth(short Month, short Year);
-	short NumOfDaysInMonth(short Month, short Year) {
-		return   NumOfDaysInMonth(Month, Year);
+	static	short NumOfDaysInMonth(short Month, short Year)
+	{
+		if (Month < 1 || Month>12)return 0;
+		int Days[12] = { 31, 28,  31,  30,  31,  30, 31,  31,  30,  31,  30,  31 };
+
+		return	(Month == 2) ? (isLeapYear(Year) ? 29 : 28) : Days[Month - 1];
+	}
+	short NumOfDaysInMonth() {
+		return  NumOfDaysInMonth(_Month, _Year);
 	}
 	static	bool IsValidDate(clsDate& Date) {
 		if (NumOfDaysInMonth(Date.Month, Date.Year) < Date.Day || Date.Day < 1)return false;
@@ -105,6 +124,12 @@ public:
 	}
 	static	string DateToString(clsDate& Date, string delim = "/") {
 		return to_string(Date.Day) + delim + to_string(Date.Month) + delim + to_string(Date.Year);
+	}
+	static void Print(clsDate Date) {
+		cout << DateToString(Date) << endl;
+	}
+	void Print() {
+		Print(*this);
 	}
 	string DateToString(string delim = "/") {
 		return   DateToString(*this, delim);
@@ -144,16 +169,6 @@ public:
 		return isLeapYear(Year) ? 366 : 365;
 	}
 	short NumOfDaysInYear() { return   NumOfDaysInYear(_Year); }
-	static	short NumOfDaysInMonth(short Month, short Year)
-	{
-		if (Month < 1 || Month>12)return 0;
-		int Days[12] = { 31, 28,  31,  30,  31,  30, 31,  31,  30,  31,  30,  31 };
-
-		return	(Month == 2) ? (isLeapYear(Year) ? 29 : 28) : Days[Month - 1];
-	}
-	short NumOfDaysInMonth() {
-		return   NumOfDaysInMonth(_Month, _Year);
-	}
 	static	short NumOfDaysInMonth2(short Month, short Year)
 	{
 		if (Month < 1 || Month>12)return 0;
@@ -463,7 +478,7 @@ public:
 		return &localTime;
 	}
 	static  clsDate& GetSystemDate() {
-		static clsDate Date(
+		clsDate Date(
 			GetNowDate()->tm_mday,
 			GetNowDate()->tm_mon + 1,
 			GetNowDate()->tm_year + 1900
@@ -475,7 +490,7 @@ public:
 		int NumOfDays = GetDifferance2Date(DateNow, Date);
 		return NumOfDays;
 	}
-	int CalculateYourAgeInDay(clsDate& Date) {
+	int CalculateYourAgeInDay() {
 		return   CalculateYourAgeInDay(*this);
 	}
 	static	clsDate& IncreaseDateByXDays(int x, clsDate& Date) {
@@ -837,11 +852,12 @@ public:
 
 
 
-
-
-
-
-	clsDate() : clsDate(GetNowDate()->tm_mday, GetNowDate()->tm_mon + 1, GetNowDate()->tm_year + 1900) {}
+	clsDate() {
+		clsDate Date = GetSystemDate();
+		_Day = Date.Day;
+		_Month = Date.Month;
+		_Year = Date.Year;
+	}
 	clsDate(short Day, short Month, short Year) {
 		_Day = Day;
 		_Month = Month;
@@ -859,20 +875,6 @@ public:
 		_Month = Date.Month;
 		_Year = Date.Year;
 	}
-
-
-	//setter and getter:-
-	short GetDay() { return _Day; };
-	void SetDay(short Day) { _Day = Day; };
-	__declspec(property(get = GetDay, put = SetDay))short Day;
-	//setter and getter:-
-	short GetMonth() { return _Month; };
-	void SetMonth(short Month) { _Month = Month; };
-	__declspec(property(get = GetMonth, put = SetMonth))short Month;
-	//setter and getter:-
-	short GetYear() { return _Year; };
-	void SetYear(short Year) { _Year = Year; };
-	__declspec(property(get = GetYear, put = SetYear))short Year;
 };
 
 
@@ -967,3 +969,21 @@ public:
 	__declspec(property(get = GetTo, put = SetTo))clsDate To;
 
 };
+
+void DateEx() {
+	clsDate Date1("17/8/2024");
+	Date1.Print();
+
+	clsDate Date2(17, 8, 2024);
+	Date2.Print();
+
+	clsDate Date3(230, 2024);
+	Date3.Print();
+
+	clsDate Date4;
+	Date4.Print();
+
+	Date4.PrintMonthCalender();
+	Date4.PrintMonthYearCalender(); 
+
+}

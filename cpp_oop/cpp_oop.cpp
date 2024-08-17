@@ -5,6 +5,7 @@
 #include "developer.h"
 #include "nested_class.h"
 #include "clsString.h"
+#include "clsDate.h"
 using namespace std;
  int main()
 {
@@ -13,6 +14,7 @@ using namespace std;
 	 //InhertedEmployeeExample();
 	 //DeveloperExample();
 	 //NestedClassesExample();
-	 ClsStringExample();
+	 //ClsStringExample();
+	 DateEx();
 
 }
