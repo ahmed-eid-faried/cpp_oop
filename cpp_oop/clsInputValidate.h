@@ -32,12 +32,12 @@ public:
 		while (true) {
 			cin >> Num;
 			if (cin.fail()) {
-				cin.clear(); // clear the error flag
-				cin.ignore(numeric_limits< streamsize>::max(), '\n'); // discard invalid input
+				cin.clear(); // Clear the error flag
+				cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
 				cout << Error;
 			}
 			else {
-				break; // valid input
+				break; // Valid input
 			}
 		}
 		return Num;
@@ -63,6 +63,10 @@ public:
 		do {
 			cout << Message << " FROM " << to_string(From) << " TO " << to_string(To) << ": ";
 			cin >> NUM;
+			if (cin.fail()) {
+				cin.clear(); // Clear the error flag
+				cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+			}
 		} while (NUM < From || NUM > To);
 		return NUM;
 	}
@@ -71,7 +75,11 @@ public:
 		do {
 			cout << Message << " FROM " << to_string(From) << " TO " << to_string(To) << ": ";
 			cin >> NUM;
-		} while (NUM <= From || NUM >= To);
+			if (cin.fail()) {
+				cin.clear(); // Clear the error flag
+				cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+			}
+		} while (NUM <  From || NUM >  To);
 		return NUM;
 	}
 	static bool IsValideDate(clsDate Date) {
@@ -84,28 +92,28 @@ void InputValidateEX() {
 	cout << clsInputValidate::IsNumberBetween(5.5, 1.3, 10.8) << endl;
 
 	cout << clsInputValidate::IsDateBetween(clsDate(),
-		clsDate(8, 12, 2022),
-		clsDate(31, 12, 2022)) << endl;
+		clsDate(8, 12, 2024),
+		clsDate(31, 12, 2024)) << endl;
 
 	cout << clsInputValidate::IsDateBetween(clsDate(),
-		clsDate(31, 12, 2022),
-		clsDate(8, 12, 2022)) << endl;
+		clsDate(31, 12, 2024),
+		clsDate(8, 12, 2024)) << endl;
 
-	cout << "\nPlease Enter a Number:\n";
+	//cout << "\nPlease Enter a Number:\n";
 	int x = clsInputValidate::ReadIntNumber();
-	cout << "x=" << x;
+	cout << "x=" << x<<endl;
 
-	cout << "\nPlease Enter a Number between 1 and 5:\n";
+	//cout << "\nPlease Enter a Number between 1 and 5:\n";
 	int y = clsInputValidate::ReadIntNumberBetween(1, 5, "Number is not within range, enter again:\n");
-	cout << "y=" << y;
+	cout << "y=" << y << endl;
 
-	cout << "\nPlease Enter a Double Number:\n";
+	//cout << "\nPlease Enter a Double Number:\n";
 	double a = clsInputValidate::ReadDblNumber();
-	cout << "a=" << a;
+	cout << "a=" << a << endl;
 
-	cout << "\nPlease Enter a Double Number between 1 and 5:\n";
+	//cout << "\nPlease Enter a Double Number between 1 and 5:\n";
 	double b = clsInputValidate::ReadDblNumberBetween(1, 5, "Number is not within range, enter again:\n");
-	cout << "b=" << b;
+	cout << "b=" << b << endl;
 
-	cout << endl << clsInputValidate::IsValideDate(clsDate(35, 12, 2022)) << endl;
+	cout << endl << clsInputValidate::IsValideDate(clsDate(35, 12, 2024)) << endl;
 }
