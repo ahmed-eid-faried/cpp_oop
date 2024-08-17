@@ -7,6 +7,8 @@
 #include "clsString.h"
 #include "clsDate.h"
 #include "clsUtil.h"
+#include "clsInputValidate.h"
+#include "clsInputValidate.h"
 using namespace std;
  int main()
 {
@@ -19,6 +21,7 @@ using namespace std;
 	 //NestedClassesExample();
 	 //ClsStringExample();
 	 //DateEx();
-	 UtilEX();
+	 //UtilEX();
+	 InputValidateEX();
 
 }
