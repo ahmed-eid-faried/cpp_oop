@@ -6,15 +6,19 @@
 #include "nested_class.h"
 #include "clsString.h"
 #include "clsDate.h"
+#include "clsUtil.h"
 using namespace std;
  int main()
 {
+	 clsUtil::Srand();
+
 	 //PersonExample();
 	 //EmployeeExample();
 	 //InhertedEmployeeExample();
 	 //DeveloperExample();
 	 //NestedClassesExample();
 	 //ClsStringExample();
-	 DateEx();
+	 //DateEx();
+	 UtilEX();
 
 }
