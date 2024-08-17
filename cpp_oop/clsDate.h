@@ -982,8 +982,10 @@ void DateEx() {
 
 	clsDate Date4;
 	Date4.Print();
+	Date4.IncreaseDateByOneDay();
+	Date4.Print();
 
-	Date4.PrintMonthCalender();
-	Date4.PrintMonthYearCalender(); 
+	//Date4.PrintMonthCalender();
+	//Date4.PrintMonthYearCalender(); 
 
 }
